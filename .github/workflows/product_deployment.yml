@@ -3,7 +3,6 @@ on:
   push:
     branches: [main]
 jobs:
-
   converge:
     name: Converge
     runs-on: ubuntu-latest
@@ -13,12 +12,14 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
-      - name: Converge
-        uses: werf/actions/converge@v1.2
-        with:
-          env: production
-          kube-config-base64-data: ${{ secrets.KUBE_CONFIG_BASE64_DATA }}
+      
+      - name: Install werf
+        uses: werf/actions/install@v2
+        
+      - name: Run script
+        run: |
+          . $(werf ci-env github --as-file) 
+          werf converge
         env:
           WERF_SET_ENV_URL: "envUrl=http://example.com"
           MONGO_HOST: ${{ secrets.MONGO_HOST }}
