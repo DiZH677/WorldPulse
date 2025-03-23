@@ -1,0 +1,26 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: news-parser
+  description: Парсер новостей из тг каналов
+paths:
+  /news-parser/ping:
+    get:
+      summary: Returns a greeting and the current time
+      operationId: getGreeting
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+                properties:
+                  message:
+                    type: string
+                    example: Hello, World!
+                  currentTime:
+                    type: string
+                    format: date-time
+                    example: 2023-10-10T14:48:00.000Z

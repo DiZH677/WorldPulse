@@ -1,0 +1,50 @@
+openapi: 3.0.0
+info:
+  description: Сервис для взаимодействия с телеграммом
+  title: telegram-bot
+  version: 1.0.0
+servers:
+- url: /
+paths:
+  /telegram-bot/ping:
+    get:
+      operationId: getGreeting
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getGreeting_200_response'
+          description: Successful response
+      summary: Returns a greeting and the current time
+components:
+  schemas:
+    getGreeting_200_response_tg_bot_thing:
+      example:
+        test_prop: test_prop
+      properties:
+        test_prop:
+          title: test_prop
+          type: string
+      title: getGreeting_200_response_tg_bot_thing
+      type: object
+    getGreeting_200_response:
+      example:
+        currentTime: 2023-10-10T14:48:00Z
+        tg_bot_thing:
+          test_prop: test_prop
+        message: "Hello, World!"
+      properties:
+        message:
+          example: "Hello, World!"
+          title: message
+          type: string
+        currentTime:
+          example: 2023-10-10T14:48:00Z
+          format: date-time
+          title: currentTime
+          type: string
+        tg_bot_thing:
+          $ref: '#/components/schemas/getGreeting_200_response_tg_bot_thing'
+      title: getGreeting_200_response
+      type: object

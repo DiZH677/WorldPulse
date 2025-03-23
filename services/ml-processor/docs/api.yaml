@@ -1,0 +1,27 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: ml-processor
+  description: Сервис для взаимодействия со всеми ML моделями
+paths:
+  /ml-processor/ping:
+    get:
+      summary: Returns a greeting and the current time
+      operationId: getGreeting
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Hello, World!
+                  currentTime:
+                    type: string
+                    format: date-time
+                    example: 2023-10-10T14:48:00.000Z
+                  ml_specific_thing:
+                    type: integer
