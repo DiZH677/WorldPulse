@@ -3,9 +3,7 @@ version: '3.8'
 
 services:
   ml-processor:
-    build:
-      context: ./services/ml-processor
-      dockerfile: Dockerfile
+    image: $WERF_ML_PROCESSOR_DOCKER_IMAGE_NAME
     ports:
       - "8081:8080"
     command: uvicorn endpoints.main:app --host 0.0.0.0 --port 8080
@@ -13,9 +11,7 @@ services:
       - app-network
 
   news-sender:
-    build:
-      context: ./services/news-sender
-      dockerfile: Dockerfile
+    image: $WERF_NEWS_PARSER_DOCKER_IMAGE_NAME
     ports:
       - "8082:8080"
     command: uvicorn endpoints.main:app --host 0.0.0.0 --port 8080
@@ -23,9 +19,7 @@ services:
       - app-network
 
   news-parser:
-    build:
-      context: ./services/news-parser
-      dockerfile: Dockerfile
+    image: $WERF_NEWS_SENDER_DOCKER_IMAGE_NAME
     ports:
       - "8083:8080"
     command: uvicorn endpoints.main:app --host 0.0.0.0 --port 8080
@@ -33,9 +27,7 @@ services:
       - app-network
 
   telegram-bot:
-    build:
-      context: ./services/telegram-bot
-      dockerfile: Dockerfile
+    image: $WERF_TELEGRAM_BOT_DOCKER_IMAGE_NAME
     ports:
       - "8084:8080"
     command: uvicorn endpoints.main:app --host 0.0.0.0 --port 8080

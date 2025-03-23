@@ -1,0 +1,15 @@
+project: world-pulse
+configVersion: 1
+
+---
+image: ml-processor
+dockerfile: services/ml-processor/Dockerfile
+---
+image: news-parser
+dockerfile: services/news-parser/Dockerfile
+---
+image: news-sender
+dockerfile: services/news-sender/Dockerfile
+---
+image: telegram-bot
+dockerfile: services/telegram-bot/Dockerfile
