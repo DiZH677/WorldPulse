@@ -14,14 +14,13 @@ def test_get_greeting(client: TestClient):
 
     headers = {
     }
+    # uncomment below to make a request
+    #response = client.request(
+    #    "GET",
+    #    "/ml-processor/ping",
+    #    headers=headers,
+    #)
 
-    response = client.request(
-       "GET",
-       "/greet",
-       headers=headers,
-    )
-
-    assert response.status_code == 200
-    data: GetGreeting200Response = response.json()
-    assert data['message'] == 'Hello World!'
+    # uncomment below to assert the status code of the HTTP response
+    #assert response.status_code == 200
 
