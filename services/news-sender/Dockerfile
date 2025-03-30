@@ -8,7 +8,6 @@ ENV PATH="/venv/bin:$PATH"
 RUN pip install --upgrade pip
 
 COPY /services/news-sender .
-RUN ls -la
 RUN pip install --no-cache-dir .
 RUN pip install -r extra_req.txt
 
