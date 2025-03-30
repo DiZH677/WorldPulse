@@ -1,6 +1,6 @@
 FROM python AS builder
 
-WORKDIR /usr/src/app
+WORKDIR /services/ml-processor
 
 RUN python3 -m venv /venv
 ENV PATH="/venv/bin:$PATH"
