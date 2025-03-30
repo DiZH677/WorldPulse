@@ -5,10 +5,16 @@ WORKDIR /usr/src/app
 RUN python3 -m venv /venv
 ENV PATH="/venv/bin:$PATH"
 
+RUN apt-get update && apt-get install -y \
+    cmake \
+    build-essential \
+    pkg-config \
+    && rm -rf /var/lib/apt/lists/*
+
 RUN pip install --upgrade pip
 
 COPY . .
-RUN pip install --no-cache-dir .
+RUN pip install .
 RUN pip install -r extra_req.txt
 
 

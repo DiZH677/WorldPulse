@@ -1,1 +1,1 @@
-from .views.PingHandlerImpl import *
+from .views.ModelHandlerImpl import *

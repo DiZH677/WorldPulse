@@ -2,7 +2,8 @@
 
 from typing import ClassVar, Dict, List, Tuple  # noqa: F401
 
-from endpoints.models.get_greeting200_response import GetGreeting200Response
+from endpoints.models.ml_processor_new_news_post200_response import MlProcessorNewNewsPost200Response
+from endpoints.models.ml_processor_new_news_post_request import MlProcessorNewNewsPostRequest
 
 
 class BaseDefaultApi:
@@ -11,7 +12,8 @@ class BaseDefaultApi:
     def __init_subclass__(cls, **kwargs):
         super().__init_subclass__(**kwargs)
         BaseDefaultApi.subclasses = BaseDefaultApi.subclasses + (cls,)
-    async def get_greeting(
+    async def ml_processor_new_news_post(
         self,
-    ) -> GetGreeting200Response:
+        ml_processor_new_news_post_request: MlProcessorNewNewsPostRequest,
+    ) -> MlProcessorNewNewsPost200Response:
         ...
