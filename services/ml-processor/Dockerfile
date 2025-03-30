@@ -1,13 +1,13 @@
 FROM python AS builder
 
-WORKDIR /services/ml-processor
+WORKDIR /usr/src/app
 
 RUN python3 -m venv /venv
 ENV PATH="/venv/bin:$PATH"
 
 RUN pip install --upgrade pip
 
-COPY . .
+COPY /services/ml-processor .
 RUN ls -la
 RUN pip install --no-cache-dir .
 RUN pip install -r extra_req.txt
