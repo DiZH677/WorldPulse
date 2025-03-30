@@ -17,6 +17,8 @@ spec:
       containers:
       - name: news-sender
         image: {{ .Values.werf.image.news_sender }}
+        command: ["uvicorn"]
+        args: ["endpoints.main:app", "--host", "0.0.0.0", "--port", "8080"]
         ports:
         - containerPort: 8080
         env:

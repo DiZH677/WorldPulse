@@ -30,6 +30,3 @@ FROM python AS service
 WORKDIR /root/app/site-packages
 COPY --from=test_runner /venv /venv
 ENV PATH=/venv/bin:$PATH
-
-ENTRYPOINT ["uvicorn"]
-CMD ["endpoints.main:app" "--host" "0.0.0.0" "--port" "8080"]
