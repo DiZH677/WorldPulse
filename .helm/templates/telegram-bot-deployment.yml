@@ -15,7 +15,7 @@ spec:
       imagePullSecrets:
       - name: registrysecret
       containers:
-      - name: app-backend
+      - name: telegram-bot-backend
         image: {{ .Values.werf.image.telegram_bot }}
         ports:
         - containerPort: 8080

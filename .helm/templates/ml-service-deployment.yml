@@ -15,7 +15,7 @@ spec:
       imagePullSecrets:
       - name: registrysecret
       containers:
-      - name: app-backend
+      - name: ml-processor-backend
         image: {{ .Values.werf.image.ml_processor }}
         ports:
         - containerPort: 8080
