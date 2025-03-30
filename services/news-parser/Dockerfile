@@ -31,4 +31,4 @@ WORKDIR /root/app/site-packages
 COPY --from=test_runner /venv /venv
 ENV PATH=/venv/bin:$PATH
 
-ENTRYPOINT [ "run_service.sh" ]
+ENTRYPOINT [ "./run_service.sh" ]
