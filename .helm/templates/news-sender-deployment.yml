@@ -16,7 +16,7 @@ spec:
       - name: registrysecret
       containers:
       - name: app-backend
-        image: {{ .Values.werf.image.news-sender }}
+        image: {{ .Values.werf.image.news_sender }}
         ports:
         - containerPort: 8080
         env:

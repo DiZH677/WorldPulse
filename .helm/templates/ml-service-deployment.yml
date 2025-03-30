@@ -16,7 +16,7 @@ spec:
       - name: registrysecret
       containers:
       - name: app-backend
-        image: {{ .Values.werf.image.ml-processor }}
+        image: {{ .Values.werf.image.ml_processor }}
         ports:
         - containerPort: 8080
         env:
