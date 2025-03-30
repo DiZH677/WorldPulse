@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ml-processor-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ml-processor-backend
+  template:
+    metadata:
+      labels:
+        app: ml-processor-backend
+    spec:
+      imagePullSecrets:
+      - name: registrysecret
+      containers:
+      - name: app-backend
+        image: {{ .Values.werf.image.ml-processor }}
+        ports:
+        - containerPort: 8080
+        env:
+          - name: EXAMPLE_ENV
+            value: "example_value"

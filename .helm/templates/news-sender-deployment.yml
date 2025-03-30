@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: news-sender-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: news-sender-backend
+  template:
+    metadata:
+      labels:
+        app: news-sender-backend
+    spec:
+      imagePullSecrets:
+      - name: registrysecret
+      containers:
+      - name: app-backend
+        image: {{ .Values.werf.image.news-sender }}
+        ports:
+        - containerPort: 8080
+        env:
+          - name: EXAMPLE_ENV
+            value: "example_value"
