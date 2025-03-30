@@ -1,0 +1,99 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ml-processor-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ml-processor-backend
+  template:
+    metadata:
+      labels:
+        app: ml-processor-backend
+    spec:
+      imagePullSecrets:
+      - name: registrysecret
+      containers:
+      - name: app-backend
+        image: {{ .Values.werf.image.ml-processor }}
+        ports:
+        - containerPort: 8080
+        env:
+          - name: EXAMPLE_ENV
+            value: "example_value"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: news-parser-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: news-parser-backend
+  template:
+    metadata:
+      labels:
+        app: news-parser-backend
+    spec:
+      imagePullSecrets:
+      - name: registrysecret
+      containers:
+      - name: app-backend
+        image: {{ .Values.werf.image.news-parser }}
+        ports:
+        - containerPort: 8080
+        env:
+          - name: EXAMPLE_ENV
+            value: "example_value"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: news-sender-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: news-sender-backend
+  template:
+    metadata:
+      labels:
+        app: news-sender-backend
+    spec:
+      imagePullSecrets:
+      - name: registrysecret
+      containers:
+      - name: app-backend
+        image: {{ .Values.werf.image.news-sender }}
+        ports:
+        - containerPort: 8080
+        env:
+          - name: EXAMPLE_ENV
+            value: "example_value"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: telegram-bot-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: telegram-bot-backend
+  template:
+    metadata:
+      labels:
+        app: telegram-bot-backend
+    spec:
+      imagePullSecrets:
+      - name: registrysecret
+      containers:
+      - name: app-backend
+        image: {{ .Values.werf.image.telegram-bot }}
+        ports:
+        - containerPort: 8080
+        env:
+          - name: EXAMPLE_ENV
+            value: "example_value"
