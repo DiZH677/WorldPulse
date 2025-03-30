@@ -15,7 +15,7 @@ spec:
       imagePullSecrets:
       - name: registrysecret
       containers:
-      - name: news-sender-backend
+      - name: news-sender
         image: {{ .Values.werf.image.news_sender }}
         ports:
         - containerPort: 8080
