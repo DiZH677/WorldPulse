@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: telegram-bot-backend
+  name: telegram-bot
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: telegram-bot-backend
+      app: telegram-bot
   template:
     metadata:
       labels:
-        app: telegram-bot-backend
+        app: telegram-bot
     spec:
       imagePullSecrets:
       - name: registrysecret

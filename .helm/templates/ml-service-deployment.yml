@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ml-processor-backend
+  name: ml-processor
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ml-processor-backend
+      app: ml-processor
   template:
     metadata:
       labels:
-        app: ml-processor-backend
+        app: ml-processor
     spec:
       imagePullSecrets:
       - name: registrysecret

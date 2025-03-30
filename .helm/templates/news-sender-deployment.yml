@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: news-sender-backend
+  name: news-sender
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: news-sender-backend
+      app: news-sender
   template:
     metadata:
       labels:
-        app: news-sender-backend
+        app: news-sender
     spec:
       imagePullSecrets:
       - name: registrysecret

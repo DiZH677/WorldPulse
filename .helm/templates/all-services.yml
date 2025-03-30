@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: ml-processor-backend
+  name: ml-processor
 spec:
   selector:
-    app: ml-processor-backend
+    app: ml-processor
   ports:
     - name: http
       port: 8080
@@ -12,10 +12,22 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: news-parser-backend
+  name: news-parser
 spec:
   selector:
-    app: news-parser-backend
+    app: news-parser
+  ports:
+    - name: http
+      port: 8080
+      nodePort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: news-sender
+spec:
+  selector:
+    app: news-sender
   ports:
     - name: http
       port: 8080
@@ -23,21 +35,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: news-sender-backend
+  name: telegram-bot
 spec:
   selector:
-    app: news-sender-backend
-  ports:
-    - name: http
-      port: 8080
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: telegram-bot-backend
-spec:
-  selector:
-    app: telegram-bot-backend
+    app: telegram-bot
   ports:
     - name: http
       port: 8080

@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: news-parser-backend
+  name: news-parser
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: news-parser-backend
+      app: news-parser
   template:
     metadata:
       labels:
-        app: news-parser-backend
+        app: news-parser
     spec:
       imagePullSecrets:
       - name: registrysecret
