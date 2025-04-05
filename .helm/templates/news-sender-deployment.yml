@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: news-sender
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: news-sender
+  template:
+    metadata:
+      labels:
+        app: news-sender
+    spec:
+      imagePullSecrets:
+      - name: registrysecret
+      containers:
+      - name: news-sender
+        image: {{ .Values.werf.image.news_sender }}
+        command: ["uvicorn"]
+        args: ["endpoints.main:app", "--host", "0.0.0.0", "--port", "8080"]
+        ports:
+        - containerPort: 8080
+        env:
+          - name: EXAMPLE_ENV
+            value: "example_value"

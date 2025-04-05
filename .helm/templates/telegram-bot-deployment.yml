@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: telegram-bot
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: telegram-bot
+  template:
+    metadata:
+      labels:
+        app: telegram-bot
+    spec:
+      imagePullSecrets:
+      - name: registrysecret
+      containers:
+      - name: telegram-bot
+        image: {{ .Values.werf.image.telegram_bot }}
+        command: ["uvicorn"]
+        args: ["endpoints.main:app", "--host", "0.0.0.0", "--port", "8080"]
+        ports:
+        - containerPort: 8080
+        env:
+          - name: EXAMPLE_ENV
+            value: "example_value"

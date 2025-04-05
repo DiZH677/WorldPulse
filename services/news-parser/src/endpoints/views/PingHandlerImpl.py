@@ -21,4 +21,4 @@ class DefaultApiImpl(BaseDefaultApi):
         ns_response = ns_client.get_greeting()
         tg_client_response = tg_client.get_greeting()
 
-        return GetGreeting200Response(additional_properties={'ml': ml_response, 'ns': ns_response, 'tg': tg_client_response})
+        return GetGreeting200Response(message='hello from news parser!', currentTime=datetime.datetime.now(), additional_properties={'ml': ml_response, 'ns': ns_response, 'tg': tg_client_response})

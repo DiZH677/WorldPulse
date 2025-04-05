@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ml-processor
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ml-processor
+  template:
+    metadata:
+      labels:
+        app: ml-processor
+    spec:
+      imagePullSecrets:
+      - name: registrysecret
+      containers:
+      - name: ml-processor
+        image: {{ .Values.werf.image.ml_processor }}
+        command: ["uvicorn"]
+        args: ["endpoints.main:app", "--host", "0.0.0.0", "--port", "8080"]
+        ports:
+        - containerPort: 8080
+        env:
+          - name: EXAMPLE_ENV
+            value: "example_value"

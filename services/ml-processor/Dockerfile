@@ -13,8 +13,8 @@ RUN apt-get update && apt-get install -y \
 
 RUN pip install --upgrade pip
 
-COPY . .
-RUN pip install .
+COPY /services/ml-processor .
+RUN pip install --no-cache-dir .
 RUN pip install -r extra_req.txt
 
 
