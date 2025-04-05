@@ -12,6 +12,7 @@ src/endpoints/apis/default_api_base.py
 src/endpoints/main.py
 src/endpoints/models/__init__.py
 src/endpoints/models/extra_models.py
-src/endpoints/models/get_greeting200_response.py
+src/endpoints/models/ml_processor_new_news_post200_response.py
+src/endpoints/models/ml_processor_new_news_post_request.py
 src/endpoints/security_api.py
 tests/conftest.py

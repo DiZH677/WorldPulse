@@ -8,6 +8,7 @@ __pycache__/
 
 # Distribution / packaging
 .Python
+.mongodb/
 build/
 develop-eggs/
 dist/

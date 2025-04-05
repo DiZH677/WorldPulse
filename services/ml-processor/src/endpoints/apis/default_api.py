@@ -23,7 +23,8 @@ from fastapi import (  # noqa: F401
 )
 
 from endpoints.models.extra_models import TokenModel  # noqa: F401
-from endpoints.models.get_greeting200_response import GetGreeting200Response
+from endpoints.models.ml_processor_new_news_post200_response import MlProcessorNewNewsPost200Response
+from endpoints.models.ml_processor_new_news_post_request import MlProcessorNewNewsPostRequest
 
 
 router = APIRouter()
@@ -33,17 +34,18 @@ for _, name, _ in pkgutil.iter_modules(ns_pkg.__path__, ns_pkg.__name__ + "."):
     importlib.import_module(name)
 
 
-@router.get(
-    "/ml-processor/ping",
+@router.post(
+    "/ml-processor/new_news",
     responses={
-        200: {"model": GetGreeting200Response, "description": "Successful response"},
+        200: {"model": MlProcessorNewNewsPost200Response, "description": "Успешный возврат записи в бд"},
     },
     tags=["default"],
-    summary="Returns a greeting and the current time",
+    summary="Возвращает результат работы моделей",
     response_model_by_alias=True,
 )
-async def get_greeting(
-) -> GetGreeting200Response:
+async def ml_processor_new_news_post(
+    ml_processor_new_news_post_request: MlProcessorNewNewsPostRequest = Body(None, description=""),
+) -> MlProcessorNewNewsPost200Response:
     if not BaseDefaultApi.subclasses:
         raise HTTPException(status_code=500, detail="Not implemented")
-    return await BaseDefaultApi.subclasses[0]().get_greeting()
+    return await BaseDefaultApi.subclasses[0]().ml_processor_new_news_post(ml_processor_new_news_post_request)

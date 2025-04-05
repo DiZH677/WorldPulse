@@ -4,24 +4,51 @@ info:
   title: ml-processor
   description: Сервис для взаимодействия со всеми ML моделями
 paths:
-  /ml-processor/ping:
-    get:
-      summary: Returns a greeting and the current time
-      operationId: getGreeting
+  /ml-processor/new_news:
+    post:
+      summary: Возвращает результат работы моделей
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                text:
+                  type: string
+                  description: Текст новости
+                  example: "Поколение пепси поразило мир, успешно распознав текст на банке шпротов"
+              required:
+                - text
       responses:
         '200':
-          description: Successful response
+          description: Успешный возврат записи в бд
           content:
             application/json:
               schema:
                 type: object
                 properties:
-                  message:
-                    type: string
-                    example: Hello, World!
-                  currentTime:
-                    type: string
-                    format: date-time
-                    example: 2023-10-10T14:48:00.000Z
-                  ml_specific_thing:
+                  id:
                     type: integer
+                    format: int64
+                    description: Уникальный идентификатор новости в БД
+                    example: 42
+                  text:
+                    type: string
+                    description: Сокращенный текст новости
+                    example: "Поколение пепси распознало текст на банке шпротов"
+                  embedding:
+                    type: string
+                    description: Векторное представление новости в виде строки (base64/json)
+                    example: "W0.12, 0.45, 0.78, ..., 0.99]"
+                  classes:
+                    type: array
+                    description: Список определенных классов/категорий новости
+                    items:
+                      type: string
+                    example: ["экономика", "финансы"]
+                required:
+                  - id
+                  - text
+                  - embedding
+                  - classes

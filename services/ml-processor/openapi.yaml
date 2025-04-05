@@ -6,36 +6,74 @@ info:
 servers:
 - url: /
 paths:
-  /ml-processor/ping:
-    get:
-      operationId: getGreeting
+  /ml-processor/new_news:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/_ml_processor_new_news_post_request'
+        required: true
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getGreeting_200_response'
-          description: Successful response
-      summary: Returns a greeting and the current time
+                $ref: '#/components/schemas/_ml_processor_new_news_post_200_response'
+          description: Успешный возврат записи в бд
+      summary: Возвращает результат работы моделей
 components:
   schemas:
-    getGreeting_200_response:
-      example:
-        currentTime: 2023-10-10T14:48:00Z
-        message: "Hello, World!"
-        ml_specific_thing: 0
+    _ml_processor_new_news_post_request:
       properties:
-        message:
-          example: "Hello, World!"
-          title: message
+        text:
+          description: Текст новости
+          example: "Поколение пепси поразило мир, успешно распознав текст на банке\
+            \ шпротов"
+          title: text
           type: string
-        currentTime:
-          example: 2023-10-10T14:48:00Z
-          format: date-time
-          title: currentTime
-          type: string
-        ml_specific_thing:
-          title: ml_specific_thing
+      required:
+      - text
+      title: _ml_processor_new_news_post_request
+      type: object
+    _ml_processor_new_news_post_200_response:
+      example:
+        classes:
+        - экономика
+        - финансы
+        id: 42
+        text: Поколение пепси распознало текст на банке шпротов
+        embedding: "W0.12, 0.45, 0.78, ..., 0.99]"
+      properties:
+        id:
+          description: Уникальный идентификатор новости в БД
+          example: 42
+          format: int64
+          title: id
           type: integer
-      title: getGreeting_200_response
+        text:
+          description: Сокращенный текст новости
+          example: Поколение пепси распознало текст на банке шпротов
+          title: text
+          type: string
+        embedding:
+          description: Векторное представление новости в виде строки (base64/json)
+          example: "W0.12, 0.45, 0.78, ..., 0.99]"
+          title: embedding
+          type: string
+        classes:
+          description: Список определенных классов/категорий новости
+          example:
+          - экономика
+          - финансы
+          items:
+            type: string
+          title: classes
+          type: array
+      required:
+      - classes
+      - embedding
+      - id
+      - text
+      title: _ml_processor_new_news_post_200_response
       type: object

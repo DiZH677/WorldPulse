@@ -5,6 +5,12 @@ WORKDIR /usr/src/app
 RUN python3 -m venv /venv
 ENV PATH="/venv/bin:$PATH"
 
+RUN apt-get update && apt-get install -y \
+    cmake \
+    build-essential \
+    pkg-config \
+    && rm -rf /var/lib/apt/lists/*
+
 RUN pip install --upgrade pip
 
 COPY /services/ml-processor .
