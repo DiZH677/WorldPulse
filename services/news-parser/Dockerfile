@@ -7,7 +7,7 @@ ENV PATH="/venv/bin:$PATH"
 
 RUN pip install --upgrade pip
 
-COPY . .
+COPY /services/news-parser .
 RUN pip install --no-cache-dir .
 RUN pip install -r extra_req.txt
 
