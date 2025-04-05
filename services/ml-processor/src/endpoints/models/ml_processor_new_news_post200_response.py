@@ -34,7 +34,7 @@ class MlProcessorNewNewsPost200Response(BaseModel):
     id: StrictInt = Field(description="Уникальный идентификатор новости в БД")
     text: StrictStr = Field(description="Сокращенный текст новости")
     embedding: StrictStr = Field(description="Векторное представление новости в виде строки (base64/json)")
-    classes: StrictStr = Field(description="Определенные классы/категории новости")
+    classes: List[StrictStr] = Field(description="Список определенных классов/категорий новости")
     __properties: ClassVar[List[str]] = ["id", "text", "embedding", "classes"]
 
     model_config = {

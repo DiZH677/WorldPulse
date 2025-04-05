@@ -1,7 +1,6 @@
 from transformers import T5ForConditionalGeneration, T5Tokenizer
 from endpoints.views.local_model.preprocessing import full_preprocessing
 import torch
-import numpy as np
 
 
 class T5Model():
@@ -19,7 +18,7 @@ class T5Model():
         self.summarizer['model'].generation_config.no_repeat_ngram_size = 2
         self.summarizer['model'].generation_config.num_beams = 10
 
-    def get_embeddings(self, text):
+    def get_embedding(self, text):
         inputs = self.summarizer['tokenizer'](text, return_tensors="pt", max_length=1024, truncation=True)
         
         with torch.no_grad():

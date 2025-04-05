@@ -38,7 +38,9 @@ components:
       type: object
     _ml_processor_new_news_post_200_response:
       example:
-        classes: "экономика, финансы"
+        classes:
+        - экономика
+        - финансы
         id: 42
         text: Поколение пепси распознало текст на банке шпротов
         embedding: "W0.12, 0.45, 0.78, ..., 0.99]"
@@ -60,10 +62,14 @@ components:
           title: embedding
           type: string
         classes:
-          description: Определенные классы/категории новости
-          example: "экономика, финансы"
+          description: Список определенных классов/категорий новости
+          example:
+          - экономика
+          - финансы
+          items:
+            type: string
           title: classes
-          type: string
+          type: array
       required:
       - classes
       - embedding
