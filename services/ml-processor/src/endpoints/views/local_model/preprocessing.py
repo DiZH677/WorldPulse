@@ -1,5 +1,6 @@
 import re
 
+
 def remove_emojis(text):
     # Регулярное выражение для поиска эмодзи
     emoji_pattern = re.compile(
