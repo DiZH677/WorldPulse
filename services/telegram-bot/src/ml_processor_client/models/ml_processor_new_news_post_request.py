@@ -17,20 +17,17 @@ import pprint
 import re  # noqa: F401
 import json
 
-from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
 
-class GetGreeting200Response(BaseModel):
+class MlProcessorNewNewsPostRequest(BaseModel):
     """
-    GetGreeting200Response
+    MlProcessorNewNewsPostRequest
     """ # noqa: E501
-    message: Optional[StrictStr] = None
-    current_time: Optional[datetime] = Field(default=None, alias="currentTime")
-    ml_specific_thing: Optional[StrictInt] = None
-    __properties: ClassVar[List[str]] = ["message", "currentTime", "ml_specific_thing"]
+    text: StrictStr = Field(description="Текст новости")
+    __properties: ClassVar[List[str]] = ["text"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -50,7 +47,7 @@ class GetGreeting200Response(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of GetGreeting200Response from a JSON string"""
+        """Create an instance of MlProcessorNewNewsPostRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -75,7 +72,7 @@ class GetGreeting200Response(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of GetGreeting200Response from a dict"""
+        """Create an instance of MlProcessorNewNewsPostRequest from a dict"""
         if obj is None:
             return None
 
@@ -83,9 +80,7 @@ class GetGreeting200Response(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "message": obj.get("message"),
-            "currentTime": obj.get("currentTime"),
-            "ml_specific_thing": obj.get("ml_specific_thing")
+            "text": obj.get("text")
         })
         return _obj
 

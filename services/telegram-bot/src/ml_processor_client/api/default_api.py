@@ -16,7 +16,8 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from ml_processor_client.models.get_greeting200_response import GetGreeting200Response
+from ml_processor_client.models.ml_processor_new_news_post200_response import MlProcessorNewNewsPost200Response
+from ml_processor_client.models.ml_processor_new_news_post_request import MlProcessorNewNewsPostRequest
 
 from ml_processor_client.api_client import ApiClient, RequestSerialized
 from ml_processor_client.api_response import ApiResponse
@@ -37,8 +38,9 @@ class DefaultApi:
 
 
     @validate_call
-    def get_greeting(
+    def ml_processor_new_news_post(
         self,
+        ml_processor_new_news_post_request: MlProcessorNewNewsPostRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -51,10 +53,12 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> GetGreeting200Response:
-        """Returns a greeting and the current time
+    ) -> MlProcessorNewNewsPost200Response:
+        """Возвращает результат работы моделей
 
 
+        :param ml_processor_new_news_post_request: (required)
+        :type ml_processor_new_news_post_request: MlProcessorNewNewsPostRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -77,7 +81,8 @@ class DefaultApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_greeting_serialize(
+        _param = self._ml_processor_new_news_post_serialize(
+            ml_processor_new_news_post_request=ml_processor_new_news_post_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -85,7 +90,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "GetGreeting200Response",
+            '200': "MlProcessorNewNewsPost200Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -99,8 +104,9 @@ class DefaultApi:
 
 
     @validate_call
-    def get_greeting_with_http_info(
+    def ml_processor_new_news_post_with_http_info(
         self,
+        ml_processor_new_news_post_request: MlProcessorNewNewsPostRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -113,10 +119,12 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[GetGreeting200Response]:
-        """Returns a greeting and the current time
+    ) -> ApiResponse[MlProcessorNewNewsPost200Response]:
+        """Возвращает результат работы моделей
 
 
+        :param ml_processor_new_news_post_request: (required)
+        :type ml_processor_new_news_post_request: MlProcessorNewNewsPostRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -139,7 +147,8 @@ class DefaultApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_greeting_serialize(
+        _param = self._ml_processor_new_news_post_serialize(
+            ml_processor_new_news_post_request=ml_processor_new_news_post_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -147,7 +156,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "GetGreeting200Response",
+            '200': "MlProcessorNewNewsPost200Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -161,8 +170,9 @@ class DefaultApi:
 
 
     @validate_call
-    def get_greeting_without_preload_content(
+    def ml_processor_new_news_post_without_preload_content(
         self,
+        ml_processor_new_news_post_request: MlProcessorNewNewsPostRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -176,9 +186,11 @@ class DefaultApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Returns a greeting and the current time
+        """Возвращает результат работы моделей
 
 
+        :param ml_processor_new_news_post_request: (required)
+        :type ml_processor_new_news_post_request: MlProcessorNewNewsPostRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -201,7 +213,8 @@ class DefaultApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_greeting_serialize(
+        _param = self._ml_processor_new_news_post_serialize(
+            ml_processor_new_news_post_request=ml_processor_new_news_post_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -209,7 +222,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "GetGreeting200Response",
+            '200': "MlProcessorNewNewsPost200Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -218,8 +231,9 @@ class DefaultApi:
         return response_data.response
 
 
-    def _get_greeting_serialize(
+    def _ml_processor_new_news_post_serialize(
         self,
+        ml_processor_new_news_post_request,
         _request_auth,
         _content_type,
         _headers,
@@ -245,6 +259,8 @@ class DefaultApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
+        if ml_processor_new_news_post_request is not None:
+            _body_params = ml_processor_new_news_post_request
 
 
         # set the HTTP header `Accept`
@@ -255,14 +271,27 @@ class DefaultApi:
                 ]
             )
 
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
 
         # authentication setting
         _auth_settings: List[str] = [
         ]
 
         return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/ml-processor/ping',
+            method='POST',
+            resource_path='/ml-processor/new_news',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

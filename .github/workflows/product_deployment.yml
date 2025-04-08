@@ -21,3 +21,6 @@ jobs:
           kube-config-base64-data: ${{ secrets.KUBE_CONFIG_BASE64_DATA }}
         env:
           WERF_SET_ENV_URL: "envUrl=http://example.com"
+          MONGO_HOST: ${{ secrets.MONGO_HOST }}
+          MONGO_PASSWORD: ${{ secrets.MONGO_PASSWORD }}
+          TG_TOKEN: ${{ secrets.TG_TOKEN }}
