@@ -24,3 +24,9 @@ spec:
         env:
           - name: EXAMPLE_ENV
             value: "example_value"
+          - name: MONGO_HOST
+            value: MONGO_HOST
+          - name: MONGO_PASSWORD
+            value: MONGO_PASSWORD
+          - name: TG_TOKEN
+            value: TG_TOKEN
