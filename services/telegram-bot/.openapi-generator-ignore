@@ -1,3 +1,4 @@
 Dockerfile
 src/endpoints/__init__.py
 src/bot/
+src/endpoints/main

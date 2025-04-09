@@ -238,7 +238,7 @@ class WPTelegramBot:
                     continue
                 if i >= len(schedule_times):
                     user_schedule = old_schedule
-                    raise RuntimeError()
+                    raise RuntimeError("Введено больше дней")
                 user_schedule[k] = schedule_times[i]
                 i += 1
         self.__users_service.update_user_schedule(user_id, user_schedule)

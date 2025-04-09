@@ -16,7 +16,7 @@ from fastapi import FastAPI
 
 from endpoints.apis.default_api import router as DefaultApiRouter
 import wpbot
-import asyncio
+
 
 app = FastAPI(
     title="telegram-bot",
