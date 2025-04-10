@@ -7,3 +7,4 @@ numpy == 1.26.4
 torch == 2.5.1
 transformers == 4.47.0
 sentencepiece == 0.2.0
+sentence-transformers == 4.0.1

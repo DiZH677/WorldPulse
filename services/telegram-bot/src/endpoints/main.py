@@ -15,11 +15,17 @@
 from fastapi import FastAPI
 
 from endpoints.apis.default_api import router as DefaultApiRouter
+import wpbot
+
 
 app = FastAPI(
     title="telegram-bot",
     description="Сервис для взаимодействия с телеграммом",
     version="1.0.0",
 )
+
+@app.on_event("startup")
+async def create_task():
+    await wpbot.main()
 
 app.include_router(DefaultApiRouter)

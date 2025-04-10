@@ -31,4 +31,5 @@ from ml_processor_client.exceptions import ApiAttributeError
 from ml_processor_client.exceptions import ApiException
 
 # import models into sdk package
-from ml_processor_client.models.get_greeting200_response import GetGreeting200Response
+from ml_processor_client.models.ml_processor_new_news_post200_response import MlProcessorNewNewsPost200Response
+from ml_processor_client.models.ml_processor_new_news_post_request import MlProcessorNewNewsPostRequest

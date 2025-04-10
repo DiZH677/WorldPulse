@@ -14,4 +14,5 @@
 
 
 # import models into model package
-from ml_processor_client.models.get_greeting200_response import GetGreeting200Response
+from ml_processor_client.models.ml_processor_new_news_post200_response import MlProcessorNewNewsPost200Response
+from ml_processor_client.models.ml_processor_new_news_post_request import MlProcessorNewNewsPostRequest
